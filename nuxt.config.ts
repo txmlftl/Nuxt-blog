@@ -2,8 +2,12 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: ['@nuxt/ui-pro'],
-  modules: ['@nuxt/ui', '@vueuse/nuxt'],
+  modules: ['@nuxt/ui', '@vueuse/nuxt', 'nuxt-icon'],
   typescript: {
     strict: false
   },
+  devServer: {
+    host: "http://localhost",
+    port: "3000"
+  }
 })

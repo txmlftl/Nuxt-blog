@@ -1,5 +1,9 @@
 export default defineAppConfig({
   ui: {
+    icons: {
+      dynamic: true
+    }
+    ,
     variables: {
       light: {
         background: '255 255 255',

@@ -1,10 +1,6 @@
 <template>
   <UDashboardLayout>
-    <UDashboardPanel
-      :width="250"
-      :resizable="{ min: 200, max: 300 }"
-      collapsible="hidden"
-    >
+    <UDashboardPanel :width="250" collapsible>
       <UDashboardNavbar>
         <template #left> 11111111111 </template>
       </UDashboardNavbar>
@@ -24,7 +20,12 @@
       </UDashboardSidebar>
     </UDashboardPanel>
 
-    <slot></slot>
+    <template #head>
+      <HeaderNav />
+    </template>
+    <UDashboardPanel grow>
+      <slot></slot>
+    </UDashboardPanel>
     <ClientOnly>
       <LazyUDashboardSearch :groups="groups" />
     </ClientOnly>
@@ -32,6 +33,8 @@
 </template>
 
 <script setup lang="ts">
+import HeaderNav from "~/components/HeaderNav.vue";
+
 const { toggleDashboardSearch, isDashboardSearchModalOpen } = useUIState();
 const links = [
   {
@@ -44,38 +47,67 @@ const links = [
       shortcuts: ["H", "E"],
     },
   },
-
   {
-    id: "html",
+    id: "HTML",
     label: "HTML",
-    icon: "i-mdi-language-html5",
-    to: "/html/Index",
+    icon: "i-mdi:language-html5",
+    to: "/HTML/Index",
     tooltip: {
       text: "HTML",
       shortcuts: ["H", "L"],
     },
   },
-
-  //   {
-  //     id: "settings",
-  //     label: "Settings",
-  //     to: "/settings",
-  //     icon: "i-heroicons-cog-8-tooth",
-  //     children: [
-  //       {
-  //         label: "General",
-  //         to: "/settings",
-  //         exact: true,
-  //       },
-  //       {
-  //         label: "Members",
-  //         to: "/settings/members",
-  //       },
-  //       {
-  //         label: "Notifications",
-  //         to: "/settings/notifications",
-  //       },
-  //     ],
+  {
+    id: "CSS",
+    label: "CSS",
+    icon: "i-mdi:language-css3",
+    to: "/CSS/Index",
+    tooltip: {
+      text: "CSS",
+      shortcuts: ["C", "S"],
+    },
+  },
+  {
+    id: "JavaScript",
+    label: "JavaScript",
+    icon: "i-ri:javascript-fill",
+    to: "/JavaScript/Index",
+    tooltip: {
+      text: "JavaScript",
+      shortcuts: ["J", "T"],
+    },
+  },
+  {
+    id: "NodeJs",
+    label: "NodeJs",
+    icon: "i-mdi:nodejs",
+    to: "/NodeJs/Index",
+    tooltip: {
+      text: "NodeJs",
+      shortcuts: ["N", "S"],
+    },
+  },
+  // {
+  //   id: "settings",
+  //   label: "Settings",
+  //   to: "/settings",
+  //   icon: "i-heroicons-cog-8-tooth",
+  //   children: [
+  //     {
+  //       label: "General",
+  //       to: "/settings",
+  //       exact: true,
+  //     },
+  //     {
+  //       label: "Members",
+  //       to: "/settings/members",
+  //     },
+  //     {
+  //       label: "Notifications",
+  //       to: "/settings/notifications",
+  //     },
+  //   ],
+  // },
 ];
 const groups = [
   {

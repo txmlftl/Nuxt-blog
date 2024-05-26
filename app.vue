@@ -18,7 +18,7 @@ useHead({
 });
 
 const title = "博客";
-const description = ""
+const description = "";
 useSeoMeta({
   title,
   description,
@@ -28,13 +28,14 @@ useSeoMeta({
   // twitterImage: "https://dashboard-template.nuxt.dev/social-card.png",
   // twitterCard: "summary_large_image",
 });
+const layoutName = "default";
 </script>
 
 <template>
   <div>
     <NuxtLoadingIndicator />
 
-    <NuxtLayout>
+    <NuxtLayout :name="layoutName">
       <NuxtPage />
     </NuxtLayout>
 

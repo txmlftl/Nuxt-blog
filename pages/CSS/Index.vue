@@ -1,9 +1,7 @@
 <template>
-  <div>首页</div>
+  <div>css</div>
 </template>
 
-<script>
-export default {};
-</script>
+<script setup></script>
 
 <style lang="sass" scoped></style>
