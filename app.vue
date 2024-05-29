@@ -1,45 +1,22 @@
 <script setup lang="ts">
-const colorMode = useColorMode();
-
-const color = computed(() =>
-  colorMode.value === "dark" ? "#111827" : "white"
-);
-
-useHead({
-  meta: [
-    { charset: "utf-8" },
-    { name: "viewport", content: "width=device-width, initial-scale=1" },
-    { key: "theme-color", name: "theme-color", content: color },
-  ],
-  link: [{ rel: "icon", href: "/favicon.ico" }],
-  htmlAttrs: {
-    lang: "en",
-  },
-});
-
-const title = "博客";
-const description = "";
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-  // ogImage: "https://dashboard-template.nuxt.dev/social-card.png",
-  // twitterImage: "https://dashboard-template.nuxt.dev/social-card.png",
-  // twitterCard: "summary_large_image",
-});
-const layoutName = "default";
+import { ref } from "vue";
+import { darkTheme } from "naive-ui";
+const layoutName = ref("default");
 </script>
-
 <template>
-  <div>
+  <n-config-provider :theme="darkTheme">
     <NuxtLoadingIndicator />
 
     <NuxtLayout :name="layoutName">
       <NuxtPage />
     </NuxtLayout>
-
-    <UNotifications />
-    <UModals />
-  </div>
+  </n-config-provider>
 </template>
+<style lang="scss">
+.n-config-provider{
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+</style>

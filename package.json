@@ -10,16 +10,21 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/ui-pro": "^1.2.0",
+    "@nuxt/ui": "^2.16.0",
     "@vueuse/nuxt": "^10.9.0",
     "node-sass": "^9.0.0",
     "nuxt": "^3.11.2",
+    "nuxtjs-naive-ui": "^1.0.2",
     "sass": "^1.77.2",
     "sass-loader": "^14.2.1",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2"
   },
   "devDependencies": {
-    "nuxt-icon": "^0.6.10"
+    "@vicons/ionicons5": "^0.12.0",
+    "naive-ui": "^2.38.2",
+    "nuxt-icon": "^0.6.10",
+    "unplugin-auto-import": "^0.17.6",
+    "unplugin-vue-components": "^0.27.0"
   }
 }

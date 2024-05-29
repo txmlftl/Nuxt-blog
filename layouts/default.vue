@@ -1,124 +1,97 @@
 <template>
-  <UDashboardLayout>
-    <UDashboardPanel :width="250" collapsible>
-      <UDashboardNavbar>
-        <template #left> 11111111111 </template>
-      </UDashboardNavbar>
-
-      <UDashboardSidebar>
-        <template #header>
-          <UDashboardSearchButton
-            @click="toggleDashboardSearch"
-            label="Search..."
-          />
-        </template>
-        <UDashboardSidebarLinks :links="links" />
-        <UDivider />
-        <template #footer>
-          <UserDorpDown />
-        </template>
-      </UDashboardSidebar>
-    </UDashboardPanel>
-
-    <template #head>
-      <HeaderNav />
-    </template>
-    <UDashboardPanel grow>
-      <slot></slot>
-    </UDashboardPanel>
-    <ClientOnly>
-      <LazyUDashboardSearch :groups="groups" />
-    </ClientOnly>
-  </UDashboardLayout>
+  <div>
+    <slot></slot>
+  </div>
 </template>
 
-<script setup lang="ts">
-import HeaderNav from "~/components/HeaderNav.vue";
+<script setup>
+import { h, ref } from "vue";
+import { NIcon } from "naive-ui";
+import {
+  BookOutline as BookIcon,
+  PersonOutline as PersonIcon,
+  WineOutline as WineIcon,
+} from "@vicons/ionicons5";
 
-const { toggleDashboardSearch, isDashboardSearchModalOpen } = useUIState();
-const links = [
+function renderIcon(icon) {
+  return () => h(NIcon, null, { default: () => h(icon) });
+}
+
+const menuOptions = [
   {
-    id: "home",
-    label: "Home",
-    icon: "i-heroicons-home",
-    to: "/",
-    tooltip: {
-      text: "Home",
-      shortcuts: ["H", "E"],
-    },
+    label: "且听风吟",
+    key: "hear-the-wind-sing",
+    icon: renderIcon(BookIcon),
   },
   {
-    id: "HTML",
-    label: "HTML",
-    icon: "i-mdi:language-html5",
-    to: "/HTML/Index",
-    tooltip: {
-      text: "HTML",
-      shortcuts: ["H", "L"],
-    },
+    label: "1973年的弹珠玩具",
+    key: "pinball-1973",
+    icon: renderIcon(BookIcon),
+    disabled: true,
+    children: [
+      {
+        label: "鼠",
+        key: "rat",
+      },
+    ],
   },
   {
-    id: "CSS",
-    label: "CSS",
-    icon: "i-mdi:language-css3",
-    to: "/CSS/Index",
-    tooltip: {
-      text: "CSS",
-      shortcuts: ["C", "S"],
-    },
+    label: "寻羊冒险记",
+    key: "a-wild-sheep-chase",
+    disabled: true,
+    icon: renderIcon(BookIcon),
   },
   {
-    id: "JavaScript",
-    label: "JavaScript",
-    icon: "i-ri:javascript-fill",
-    to: "/JavaScript/Index",
-    tooltip: {
-      text: "JavaScript",
-      shortcuts: ["J", "T"],
-    },
-  },
-  {
-    id: "NodeJs",
-    label: "NodeJs",
-    icon: "i-mdi:nodejs",
-    to: "/NodeJs/Index",
-    tooltip: {
-      text: "NodeJs",
-      shortcuts: ["N", "S"],
-    },
-  },
-  // {
-  //   id: "settings",
-  //   label: "Settings",
-  //   to: "/settings",
-  //   icon: "i-heroicons-cog-8-tooth",
-  //   children: [
-  //     {
-  //       label: "General",
-  //       to: "/settings",
-  //       exact: true,
-  //     },
-  //     {
-  //       label: "Members",
-  //       to: "/settings/members",
-  //     },
-  //     {
-  //       label: "Notifications",
-  //       to: "/settings/notifications",
-  //     },
-  //   ],
-  // },
-];
-const groups = [
-  {
-    key: "links",
-    label: "Go to",
-    commands: links.map((link) => ({
-      ...link,
-      shortcuts: link.tooltip?.shortcuts,
-    })),
+    label: "舞，舞，舞",
+    key: "dance-dance-dance",
+    icon: renderIcon(BookIcon),
+    children: [
+      {
+        type: "group",
+        label: "人物",
+        key: "people",
+        children: [
+          {
+            label: "叙事者",
+            key: "narrator",
+            icon: renderIcon(PersonIcon),
+          },
+          {
+            label: "羊男",
+            key: "sheep-man",
+            icon: renderIcon(PersonIcon),
+          },
+        ],
+      },
+      {
+        label: "饮品",
+        key: "beverage",
+        icon: renderIcon(WineIcon),
+        children: [
+          {
+            label: "威士忌",
+            key: "whisky",
+          },
+        ],
+      },
+      {
+        label: "食物",
+        key: "food",
+        children: [
+          {
+            label: "三明治",
+            key: "sandwich",
+          },
+        ],
+      },
+      {
+        label: "过去增多，未来减少",
+        key: "the-past-increases-the-future-recedes",
+      },
+    ],
   },
 ];
+
+const inverted = ref(false);
 </script>
-
-<style lang="scss" scoped></style>
+<style lang="scss"></style>
