@@ -1,22 +1,25 @@
 <template>
-  <div>
-    <slot></slot>
+  <div class="default-layout">
+    <SideNav></SideNav>
+    <section>
+      <header></header>
+      <slot></slot>
+    </section>
   </div>
 </template>
 
 <script setup>
 import { h, ref } from "vue";
-import { NIcon } from "naive-ui";
 import {
   BookOutline as BookIcon,
   PersonOutline as PersonIcon,
   WineOutline as WineIcon,
 } from "@vicons/ionicons5";
-
+import { NIcon } from 'naive-ui'
 function renderIcon(icon) {
   return () => h(NIcon, null, { default: () => h(icon) });
 }
-
+console.log();
 const menuOptions = [
   {
     label: "且听风吟",
@@ -94,4 +97,11 @@ const menuOptions = [
 
 const inverted = ref(false);
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.default-layout {
+  display: flex;
+  .section{
+    flex: 1;
+  }
+}
+</style>

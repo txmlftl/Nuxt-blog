@@ -1,5 +1,5 @@
 <template>
-  <div>44444</div>
+  <div><Ract></Ract></div>
 </template>
 
 <script setup>

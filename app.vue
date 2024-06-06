@@ -14,9 +14,8 @@ const layoutName = ref("default");
 </template>
 <style lang="scss">
 .n-config-provider{
-  height: 100%;
-  width: 100%;
-  display: flex;
+  height: 100vh;
+  width: 100vw;
 }
 
 </style>
